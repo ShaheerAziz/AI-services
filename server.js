@@ -2,13 +2,21 @@ const config = require('./config/config.js');
 const express = require("express")
 var cors = require("cors")
 
+var bodyParser = require('body-parser')
+
+
 
 const app = express()
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors())
 app.use("/images", express.static("./uploads/images"))
 app.use(express.json())
 
 
+app.use((err, req, res, next) => {
+    console.error(err.stack); // Log the error stack
+    res.status(500).send('Something broke!'); // Send a generic error response
+});
 
 app.get('/', (req, res) => {
 

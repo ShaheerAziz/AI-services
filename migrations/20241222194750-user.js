@@ -5,7 +5,7 @@ module.exports = {
     // await queryInterface.sequelize.query(`
     //   CREATE TYPE "enum_user_documentVerificationStatus" AS ENUM ('pending', 'verified', 'rejected')
     // `);
-    await queryInterface.createTable('user',
+    await queryInterface.createTable('users',
     {
         id: {
             type: Sequelize.UUID,
@@ -51,7 +51,7 @@ module.exports = {
     );
     },
     async down(queryInterface, Sequelize) {
-      await queryInterface.dropTable('user');
+      await queryInterface.dropTable('users');
       // Use raw SQL to drop the enum type
       // await queryInterface.sequelize.query(`
       //   DROP TYPE "enum_user_documentVerificationStatus"

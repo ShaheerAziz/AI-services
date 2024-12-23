@@ -7,6 +7,10 @@ const registerUser = async (userData) => {
   return await User.create(userData);
 };
 
+const updateUser = async (id, userData) => {
+  return await User.update(userData, { where: { id: id } });
+};
+
 const findUserByEmail = async (email) => {
     return await User.findOne({where: {email: email}})
 }
@@ -18,5 +22,6 @@ const findUserByToken = async (token) => {
 module.exports = {
     registerUser,
     findUserByEmail,
-    findUserByToken
+    findUserByToken,
+    updateUser
 };
