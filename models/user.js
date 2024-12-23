@@ -3,9 +3,8 @@ const {
   Model,
   Sequelize
 } = require('sequelize');
-const sequelize = require('../../config/database');
+const sequelize = require('../config/database');
 // const { Hooks } = require('sequelize/lib/hooks');
-const bcrypt = require('bcrypt')
 const crypto = require('crypto')
 
 const User = sequelize.define('user',

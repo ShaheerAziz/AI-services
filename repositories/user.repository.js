@@ -7,6 +7,16 @@ const registerUser = async (userData) => {
   return await User.create(userData);
 };
 
+const findUserByEmail = async (email) => {
+    return await User.findOne({where: {email: email}})
+}
+
+const findUserByToken = async (token) => {
+    return await User.findOne({where: {tokens: {[Op.includes]: token}}})
+}
+
 module.exports = {
-    registerUser
+    registerUser,
+    findUserByEmail,
+    findUserByToken
 };
