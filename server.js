@@ -1,15 +1,16 @@
 const config = require('./config/config.js');
 const express = require("express")
 var cors = require("cors")
+const path = require('path');
 
 var bodyParser = require('body-parser')
 
 
 
 const app = express()
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors())
-app.use("/images", express.static("./uploads/images"))
 app.use(express.json())
 
 

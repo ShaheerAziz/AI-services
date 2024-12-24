@@ -10,7 +10,7 @@ exports.isAuthenticatedUser = asyncHandler(async (req, res, next) => {
     }
     try {
         const tokenWithoutBearer = token.split(' ')[1];
-        console.log(tokenWithoutBearer)
+        //console.log(tokenWithoutBearer)
         const user = await userRepository.findUserByToken(tokenWithoutBearer)
         if (!user) {
             return next(new ApiError(401, 'User not found'));
