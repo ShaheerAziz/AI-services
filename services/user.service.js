@@ -1,5 +1,6 @@
 const userRepository = require("../repositories/user.repository");
 const crypto = require("crypto"); // Import crypto for encoding/decoding
+const { ApiError } = require("../utils/ApiResponse")
 
 
 const userRegistration = async (req) => {
@@ -29,10 +30,16 @@ const userRegistration = async (req) => {
     if(!_user){
 
         const user = await userRepository.registerUser(userData)
+        if(!user){
+            throw new ApiError(401, "User Registration Failed! Try Again!")
+        }
     
     }else{
         
         const updatedUser = await userRepository.updateUser(_user.id, userData)
+        if(!updatedUser){
+            throw new ApiError(401, "User Update Failed! Try Again!")
+        }
 
     }
 

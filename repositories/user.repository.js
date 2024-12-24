@@ -16,7 +16,8 @@ const findUserByEmail = async (email) => {
 }
 
 const findUserByToken = async (token) => {
-    return await User.findOne({where: {tokens: {[Op.includes]: token}}})
+    console.log(token)
+    return await User.findOne({where: {tokens: {[Op.contains]: [token]}}})
 }
 
 module.exports = {

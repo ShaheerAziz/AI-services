@@ -32,5 +32,5 @@ app.listen(PORT, "0.0.0.0", function () {
 
 
 app.use("/api/v1", require("./routes/user.route.js"))
-//app.use("/api/v1", require("./routes/AI-Integration.route.js"))
+app.use("/api/v1", require("./routes/AI-Integration.route.js"))
 
